@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block forlayouting %}
+    <div id="contentnav">
+        <div id="contentcategories">
+            <div id="listofcategories">
+                <h4>Saved</h4>
+                <ul>
+                    <li><a href="{{url_for('notes')}}">Notes</a></li>
+                    <li><a href="{{url_for('bookmarks')}}">Bookmarks</a></li>
+                </ul>
+            </div>
+        </div>
+        <p id="labelnewcontent" style="text-align: right;"><a href="{{url_for('inputpage')}}">Input New Contents</a></p>
+    </div>
+    <div id="contentpart">
+        <div id="contentpath">
+            {% block contentpath %}{% endblock %}
+        </div>
+        <div id="contentinside">
+            {% block contentinside %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'mainlayout.html' %}
+{% block contentpath %}
+    > <a href="{{url_for('home')}}">My Bookmark</a> > <a href="{{url_for('notes')}}">Notes</a> > {{ content["title"] }}
+{% endblock %}
+{% block contentinside %}
+    <div style="display: grid; grid-template-rows: auto 27pt;">
+        <div style="text-align: justify;">
+            {{ markdownpart | safe }}
+        </div>
+        <div style="text-align: right;">
+            {{ content["tags"] | safe}}
+        </div>
+    </div>
+{% endblock %}

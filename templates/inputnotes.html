@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block forlayouting %}
+    <style>
+        #content {
+            display: grid;
+            grid-template-columns: auto;
+        }
+        #contentinput {
+            display: grid;
+            grid-template-rows: auto auto;
+            background-color: rgb(77, 41, 0);
+        }
+        #contentinputtitle {
+            display: grid;
+            grid-template-rows: auto auto;
+        }
+        #contentinputtitle p {
+            padding-left: 15px;
+        }
+        #contentinputtitle input {
+            outline: none;
+            box-shadow: none;
+            border: none;
+            background-color: rgb(43, 24, 3);
+            font-family: sans-serif;
+            font-size: 14pt;
+            color: rgb(209, 209, 209);
+            padding: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        #notewriterpart {
+            display: grid;
+            grid-template-rows: 35px auto auto;
+            gap: 15px;
+        }
+        #notewriterpart2 {
+            display: grid;
+            grid-template-columns: 200px auto;
+        }
+        #notewriterpart2 p {
+            padding-left: 15px;
+        }
+        #writingpart {
+            resize: none;
+            overflow-y: auto;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            font-size: 12pt;
+            background-color: rgb(43, 24, 3);
+            font-family: sans-serif;
+            color: rgb(209, 209, 209);
+            padding: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        #lastinput {
+            display: grid;
+            grid-template-columns: auto 180px;
+        }
+        #tagsinput {
+            display: grid;
+            grid-template-rows: auto auto;
+            text-align: left;
+        }
+        #tagsinput div {
+            display: grid;
+            grid-template-columns: 50px auto;
+            padding-left: 15px;
+        }
+        #tagspart {
+            resize: none;
+            overflow-y: auto;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            font-size: 12pt;
+            background-color: rgb(43, 24, 3);
+            font-family: sans-serif;
+            color: rgb(209, 209, 209);
+            padding: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        #savebutton {
+            background-color: rgb(43, 24, 3);
+            font-size: 14pt;
+            color:rgb(209, 209, 209);
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        #floatinghints {
+            position: fixed;
+            height: auto;
+            width: auto;
+            top: 127px;
+            right: -150px;
+            background-color: rgb(77, 41, 0);
+        }
+        #floatinghints:hover {
+            right: 0;
+        }
+    </style>
+    <script>
+        function Sendnotes() {
+            const contenttitle = document.getElementById("contenttitle").value;
+            const writingpart = document.getElementById("writingpart").value;
+            const tagspart = document.getElementById("tagspart").value;
+
+            let data = new FormData();
+            data.append("titleofnotes", contenttitle);
+            data.append("contentofnotes", writingpart);
+            data.append("tagsofnotes", tagspart);
+
+            fetch("/savenotes", {
+                "method": "POST",
+                "body": data
+            })
+        }
+    </script>
+    <div id="contentinput">
+        <div id="contentinputtitle">
+            <p><b>Title</b></p>
+            <input id="contenttitle" type="text"/>
+        </div>
+        <div id="contentinputstuffs">
+            <div id="notewriterpart">
+                <div id="notewriterpart2">
+                    <p><b>What you want to note?</b></p>
+                    <p>We use markdown text, so refer to the floating bar for the markdown symbols.</p>
+                </div>
+                <textarea id="writingpart" rows="35"></textarea>
+                <div id="lastinput" style="text-align: right; padding-right: 15px; margin-bottom: 15px;">
+                    <div id="tagsinput">
+                        <div>
+                            <p><b>Tags</b></p>
+                            <p>Use space to separate tags</p>
+                        </div>
+                        <textarea id="tagspart"></textarea>
+                    </div>
+                    <button id="savebutton" type="button" onclick="Sendnotes()">Save</button>
+                </div>
+            </div>
+            <div id="floatinghints">
+                <div>
+                    <ul>
+                        <li># h1</li>
+                        <li>## h2</li>
+                        <li>### h3</li>
+                        <li>#### h4</li>
+                        <li>##### h5</li>
+                        <li>###### h6</li>
+                        <li>*italic*</li>
+                        <li>**bold**</li>
+                        <li>***bold italic***</li>
+                        <li>~~strikethrough~~</li>
+                        <li>`inline code`</li>
+                        <li>- unordered list item</li>
+                        <li>1. ordered list item</li>
+                        <li>[text](link)</li>
+                        <li>> quote</li>
+                        <li>>> nested quote</li>
+                        <li>```multiline code```</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
