@@ -9,8 +9,8 @@ And so, I build this for myself.
 ---
 
 Core features:
-- Notes Viewing (Done)
-- Notes Writing/Editing (Half way there)
-- Bookmarks Viewing (Not yet)
-- Bookmarks Writing/Editing (Not yet)
-- Database (Not yet)
+- [x] Notes Viewing
+- [ ] Notes Writing/Editing
+- [ ] Bookmarks Viewing
+- [ ] Bookmarks Writing/Editing
+- [ ] Database
