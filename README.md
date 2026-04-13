@@ -10,7 +10,7 @@ And so, I build this for myself.
 
 Core features:
 - [x] Notes Viewing
-- [ ] Notes Writing/Editing
+- [x] Notes Writing/Editing
 - [ ] Bookmarks Viewing
 - [ ] Bookmarks Writing/Editing
 - [ ] Database
