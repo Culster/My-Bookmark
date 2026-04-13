@@ -3,7 +3,8 @@
     > <a href="{{url_for('home')}}">My Bookmark</a> > Notes
 {% endblock %}
 {% block contentinside %}
-    <p>
-        This is supposed to be the list of notes.
-    </p>
+    <p>Notes are the best way to put things on your brain, do you know that? No, not because you can always read it later, but because you have to <b>write</b> it.</p>
+    <p>Anyway, up until now, you've wrote {{ lennoteslist }} note(s).</p>
+    <p>This is the list of notes that you've made this far:</p>
+    {{ unorderednoteslist | safe }}
 {% endblock %}

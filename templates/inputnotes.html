@@ -104,11 +104,15 @@
     </style>
     <script>
         function Sendnotes() {
+            const params = new URLSearchParams(window.location.search)
+
+            const idparams = params.get("idofnotes")
             const contenttitle = document.getElementById("contenttitle").value;
             const writingpart = document.getElementById("writingpart").value;
             const tagspart = document.getElementById("tagspart").value;
 
             let data = new FormData();
+            data.append("idofnotes", idparams)
             data.append("titleofnotes", contenttitle);
             data.append("contentofnotes", writingpart);
             data.append("tagsofnotes", tagspart);
@@ -122,7 +126,7 @@
     <div id="contentinput">
         <div id="contentinputtitle">
             <p><b>Title</b></p>
-            <input id="contenttitle" type="text"/>
+            <input id="contenttitle" type="text" value="{{ titleofnotes }}"/>
         </div>
         <div id="contentinputstuffs">
             <div id="notewriterpart">
@@ -130,14 +134,14 @@
                     <p><b>What you want to note?</b></p>
                     <p>We use markdown text, so refer to the floating bar for the markdown symbols.</p>
                 </div>
-                <textarea id="writingpart" rows="35"></textarea>
+                <textarea id="writingpart" rows="35">{{ contentofnotes }}</textarea>
                 <div id="lastinput" style="text-align: right; padding-right: 15px; margin-bottom: 15px;">
                     <div id="tagsinput">
                         <div>
                             <p><b>Tags</b></p>
                             <p>Use space to separate tags</p>
                         </div>
-                        <textarea id="tagspart"></textarea>
+                        <textarea id="tagspart">{{ tagsofnotes }}</textarea>
                     </div>
                     <button id="savebutton" type="button" onclick="Sendnotes()">Save</button>
                 </div>

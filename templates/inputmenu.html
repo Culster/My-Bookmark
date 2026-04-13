@@ -1,0 +1,16 @@
+{% extends 'mainlayout.html' %}
+{% block contentpath %}
+    > <a href="{{url_for('home')}}">My Bookmark</a> > Input Menu
+{% endblock %}
+{% block contentinside %}
+    <div style="padding: 10spx">
+        <div style="margin: 10px; padding: 15px; background-color: rgb(43, 24, 3);">
+            <a href="{{url_for('inputpages', whichinput='notes')}}">Input Notes</a>
+            <p style="padding-left: 20px">Notes, unlike Bookmarks, are what <i>you</i> write about some subject. It can be objective or subjective and it doesn't matter.</p>
+        </div>
+        <div style="margin: 10px; padding: 15px; background-color: rgb(43, 24, 3);">
+            <a href="{{url_for('inputpages', whichinput='bookmarks')}}">Input Bookmarks</a>
+            <p style="padding-left: 20px">Bookmarks are the references you saved for reading purposes.</p>
+        </div>
+    </div>
+{% endblock %}

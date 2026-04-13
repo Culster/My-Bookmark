@@ -34,14 +34,17 @@
             }
             #contentnav {
                 display: grid;
-                grid-template-rows: 350px auto;
+                grid-template-rows: min-content 25pt;
                 background-color: rgb(77, 41, 0);
                 padding: 10px;
                 margin-right: 5px;
             }
+            #contentcategories {
+                min-height: 350px;
+            }
             #contentpart {
                 display: grid;
-                grid-template-rows: 27pt auto;
+                grid-template-rows: max-content auto;
             }
             #contentpath {
                 color: rgb(77, 41, 0);

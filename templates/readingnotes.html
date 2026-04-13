@@ -3,12 +3,16 @@
     > <a href="{{url_for('home')}}">My Bookmark</a> > <a href="{{url_for('notes')}}">Notes</a> > {{ content["title"] }}
 {% endblock %}
 {% block contentinside %}
-    <div style="display: grid; grid-template-rows: auto 27pt;">
+    <div style="display: grid; grid-template-rows: auto auto 40pt;">
         <div style="text-align: justify;">
             {{ markdownpart | safe }}
         </div>
-        <div style="text-align: right;">
-            {{ content["tags"] | safe}}
+        <div style="background-color: rgb(209, 209, 209); height: 5px;"></div>
+        <div style="display: grid; grid-template-columns: 48pt auto; padding-top: 15px;">
+            <a href="{{ url_for('inputpages', whichinput='notes', idofnotes=idofnotes) }}">Edit</a>
+            <div style="text-align: right;">
+                {{ tagsofnotes }}
+            </div>
         </div>
     </div>
 {% endblock %}

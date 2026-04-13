@@ -1,0 +1,122 @@
+{% extends 'base.html'%}
+{% block forlayouting %}
+    <style>
+        #content {
+            display: grid;
+            grid-template-columns: auto;
+        }
+        #bookmarkinput {
+            display: grid;
+            grid-template-rows: auto auto;
+            background-color: rgb(77, 41, 0);
+            padding: 10px;
+        }
+        #bookmarksinputtitle {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        #bookmarksinputstuffs {
+            display: grid;
+            grid-template-rows: auto auto;
+        }
+        #bookmarkssynopsis {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        #bookmarkssourcesheader {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+    </style>
+    <script>
+        function addbookmarkingstuffs() {
+            const bookmarkinputingspace = document.getElementById("bookmarkssourceslinks");
+
+            const bookmarklinkspacemain = document.createElement("div")
+            bookmarklinkspacemain.setAttribute('style', 'display: grid; grid-template-columns: auto auto;')
+
+            const bookmarklinkspacesecond1 = document.createElement("div")
+            bookmarklinkspacesecond1.setAttribute('style', 'display: grid; grid-template-columns: auto auto;')
+
+            const bookmarklinkspacesecond2 = document.createElement("div")
+            bookmarklinkspacesecond2.setAttribute('style', 'display: grid; grid-template-columns: auto auto;')
+                
+            // title for link text
+            const bookmarklinktitletext = document.createElement("p")
+            const bookmarklinktitletextbold = document.createElement("b")
+            const bookmarklinktitletextraw = document.createTextNode("Text")
+            // append for link text
+            bookmarklinktitletextbold.appendChild(bookmarklinktitletextraw)
+            bookmarklinktitletext.appendChild(bookmarklinktitletextbold)
+
+            // input for link text
+            const bookmarklinkinputtext = document.createElement("input")
+            bookmarklinkinputtext.setAttribute('class', 'linktext')
+            bookmarklinkinputtext.setAttribute('type', 'text')
+
+            // title for link address
+            const bookmarklinktitleaddress = document.createElement("p")
+            const bookmarklinktitleaddressbold = document.createElement("b")
+            const bookmarklinktitleaddressraw = document.createTextNode("Text")
+            // append for link address
+            bookmarklinktitleaddressbold.appendChild(bookmarklinktitleaddressraw)
+            bookmarklinktitleaddress.appendChild(bookmarklinktitleaddressbold)
+
+            // input for link address
+            const bookmarklinkinputaddress = document.createElement("input")
+            bookmarklinkinputaddress.setAttribute('class', 'linkaddress')
+            bookmarklinkinputaddress.setAttribute('type', 'text')
+
+            // append for linkspacesecond1
+            bookmarklinkspacesecond1.appendChild(bookmarklinktitletext)
+            bookmarklinkspacesecond1.appendChild(bookmarklinkinputtext)
+
+            // append for linkspacesecond2
+            bookmarklinkspacesecond2.appendChild(bookmarklinktitleaddress)
+            bookmarklinkspacesecond2.appendChild(bookmarklinkinputaddress)
+
+            // append for linkspacemain
+            bookmarklinkspacemain.appendChild(bookmarklinkspacesecond1)
+            bookmarklinkspacemain.appendChild(bookmarklinkspacesecond2)
+
+            bookmarkinputingspace.appendChild(bookmarklinkspacemain)
+        };
+
+        document.addEventListener('DOMContentLoaded', () =>  {
+            const bookmarkinputingspace = document.getElementById("bookmarkssourceslinks");
+
+            if (bookmarkinputingspace.childElementCount==0) {
+                addbookmarkingstuffs();
+            };
+        });
+    </script>
+    <div id="bookmarkinput">
+        <div id="bookmarksinputtitle">
+            <p><b>Title</b></p>
+            <input id="bookmarktitle" type="text"/>
+        </div>
+        <div id="bookmarksinputstuffs">
+            <div id="bookmarkssynopsis">
+                <p><b>Short Explanation</b></p>
+                <textarea id="bookmarkssynopsisarea"></textarea>
+            </div>
+            <div id="bookmarkssources">
+                <div id="bookmarkssourcesheader">
+                    <p><b>Links</b></p>
+                    <button onclick="addbookmarkingstuffs()">add element</button>
+                </div>
+                <div id="bookmarkssourceslinks"></div>
+            </div>
+            <div id="bookmarkslastinput">
+                <div id="bookmarkstags">
+                    <div>
+                        <p><b>Tags</b></p>
+                        <p>Use space to separate tags</p>
+                    </div>
+                    <textarea id="bookmarkstagspart"></textarea>
+                </div>
+                <button id="bookmarksavebutton">Save</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
